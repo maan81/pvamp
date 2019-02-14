@@ -1,0 +1,23 @@
+[
+    {
+        "name": "product_a",
+        "title": "Product A",
+        "description": "Product A description here.",
+        "image": "120x80.png",
+        "price": "25.00"
+    },
+    {
+        "name": "product_b",
+        "title": "Product B",
+        "description": "Product B description here.",
+        "image": "120x80.png",
+        "price": "15.00"
+    },
+    {
+        "name": "product_c",
+        "title": "Product C",
+        "description": "Product C description here.",
+        "image": "120x80.png",
+        "price": "35.00"
+    }
+]
