@@ -36,12 +36,18 @@ jQuery(function(){
     $(document).on('click','a.category-link',function(e){
         e.preventDefault();
 
-        $.get('server/products.json')
+        var category = $(this).attr('data-category');
+
+        $.get('server/products.json',{category:category})
             .done(function(data){
 
                 $('.product_wrapper').remove();
 
                 $.each(data,function(){
+
+                    if(this.category!==category){
+                        return true;
+                    }
 
                     var product =
                         '<!-- PRODUCT -->'+
