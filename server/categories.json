@@ -1,0 +1,20 @@
+[
+    {
+        "name": "clothes",
+        "title": "Clothes",
+        "description": "View list of clothes.",
+        "image": "no_img.png"
+    },
+    {
+        "name": "computer_and_accessories",
+        "title": "Computer & Accessories",
+        "description": "Computer and various parts as well as accessories required.",
+        "image": "no_img.png"
+    },
+    {
+        "name": "household_goods",
+        "title": "Household Goods",
+        "description": "Includes Kitchen parts",
+        "image": "no_img.png"
+    }
+]
