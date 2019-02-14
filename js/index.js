@@ -87,7 +87,7 @@ jQuery(function(){
                         ''
                     ;
 
-                    $(product).insertBefore($('.update_products'));
+                    $(product).insertBefore($('.add_category'));
                 })
 
             })
@@ -97,4 +97,16 @@ jQuery(function(){
         ;
 
     });
+
+
+    $(document).on('click','.add_category>a',function(e){
+        e.preventDefault();
+        alert('add new category');
+    });
+
+    $(document).on('click','.add_product>a',function(e){
+        e.preventDefault();
+        alert('add new product');
+    });
+
 });
