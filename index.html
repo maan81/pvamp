@@ -143,7 +143,12 @@
 
                     <div class="card-footer">
                         <div class="pull-right" style="margin: 10px">
-                            <a href="" class="btn btn-success pull-right">Checkout</a>
+
+                            <form action="/server/stripe-php-6.30.0/buy.php" method="post">
+                                <input id="checkout_amount" type="hidden" name="amount" value="">
+                                <input id="checkout_btn" href="/server/stripe-php-6.30.0/buy.php" class="btn btn-success pull-right" name="submit" value="Checkout" type="submit" />
+                            </form>
+
                             <div class="pull-right" style="margin: 5px">
                                 Total price: <b><span id="total_price">0.00</span>€</b>
                             </div>

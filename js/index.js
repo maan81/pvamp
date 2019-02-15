@@ -127,6 +127,8 @@ jQuery(function(){
 
         $('#total_price').text(total);
 
+        $('#checkout_amount').val(total);
+
     });
 
 
