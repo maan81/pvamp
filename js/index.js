@@ -1,17 +1,17 @@
-
-jQuery(function(){
+function update_categories(){
 
     $.get('server/categories.json')
         .done(function(data){
 
-            $('#new_product_category').children('option').remove();
+            $('.categories').children('.category').remove();
 
+            $('#new_product_category').children('option').remove();
 
             $.each(data,function(){
 
                 var category =
 
-                    '<div class="col-lg-4 category">'+
+                    '<div class="col-lg-4 category" data-category-name="'+this.name+'">'+
                     '    <img class="bd-blaceholder-img rounded-circle" width="140" height="140" src="/imgs/no_img.png">'+
                     '    <rect width="100%" height="100%" fill="#777"/>'+
                     '    <h2>'+this.title+'</h2>'+
@@ -42,9 +42,12 @@ jQuery(function(){
                 '<option selected> -- Select One -- </option>'
             );
         })
-        ;
     ;
+}
 
+jQuery(function(){
+
+    update_categories();
 
     $(document).on('click','a.category-link',function(e){
         e.preventDefault();
@@ -129,7 +132,8 @@ jQuery(function(){
 
             $('#new_category').modal('hide');
 
-            console.log(res);
+            update_categories();
+
         });
     });
 
@@ -153,6 +157,8 @@ jQuery(function(){
             $('#new_product').modal('hide');
 
             console.log(res);
+
+            $('a.category-link').trigger('click');
         });
 
     });
