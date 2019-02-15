@@ -54,6 +54,8 @@ jQuery(function(){
 
         var category = $(this).attr('data-category');
 
+        $('#total_price').text('0.00');
+
         $.get('server/products.json',{category:category})
             .done(function(data){
 
@@ -81,12 +83,12 @@ jQuery(function(){
                         '        </div>'+
                         '        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">'+
                         '            <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">'+
-                        '                <h6><strong>'+this.price+' <span class="text-muted">x</span></strong></h6>'+
+                        '                <h6><strong class="product_price">'+this.price+' <span class="text-muted">x</span></strong></h6>'+
                         '            </div>'+
                         '            <div class="col-4 col-sm-4 col-md-4">'+
                         '                <div class="quantity">'+
                         '                    <input type="button" value="+" class="plus">'+
-                        '                    <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">'+
+                        '                    <input type="number" step="1" max="99" min="0" value="0" title="Qty" class="qty" size="4">'+
                         '                    <input type="button" value="-" class="minus">'+
                         '                </div>'+
                         '            </div>'+
@@ -111,6 +113,19 @@ jQuery(function(){
                 console.log('Error')
             })
         ;
+
+    });
+
+    $(document).on('change','.qty',function(){
+
+        var total = 0;
+
+        $('.qty').each(function(index){
+
+            total += $(this).val() * parseFloat($('.product_price').eq(index).text());
+        });
+
+        $('#total_price').text(total);
 
     });
 
