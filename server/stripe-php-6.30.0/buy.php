@@ -2,9 +2,13 @@
 
 // https://stripe.com/docs/checkout/php
 
+session_start();
+
 require_once('vendor/autoload.php');
 
 require_once('config.php');
+
+$_SESSION['amount'] = $_POST['amount'];
 
 ?>
 

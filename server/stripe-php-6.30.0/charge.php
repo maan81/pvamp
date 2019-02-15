@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     require_once('config.php');
 
     $token  = $_POST['stripeToken'];
@@ -12,8 +14,8 @@
 
     $charge = \Stripe\Charge::create([
       'customer' => $customer->id,
-      'amount'   => 5000,
+      'amount'   => $_SESSION['amount'],
       'currency' => 'usd',
     ]);
 
-    echo '<h1>Successfully charged $50.00!</h1>';
+    echo '<h1>Successfully charged $'.$_SESSION['amount'].'!</h1>';
