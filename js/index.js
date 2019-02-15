@@ -112,10 +112,26 @@ jQuery(function(){
     });
 
 
-    /*$(document).on('click','.add_category>a',function(e){
+    $(document).on('click','#new_category_submit',function(e){
         e.preventDefault();
-        alert('add new category');
-    });*/
+
+        var data = {
+
+            "name": $('#new_category_name').val(),
+            "title": $('#new_category_title').val(),
+            "description": $('#new_category_description').val(),
+            "image": "120x80.png",
+
+        };
+
+
+        $.post('/server/new_category.php', data, function(res){
+
+            $('#new_category').modal('hide');
+
+            console.log(res);
+        });
+    });
 
     $(document).on('click','#new_product_submit',function(e){
         e.preventDefault();
