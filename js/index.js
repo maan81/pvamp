@@ -65,12 +65,12 @@ jQuery(function(){
                     var product =
                         '<!-- PRODUCT -->'+
                         '<div class="product_wrapper">'+
-                        '    <div class="row product">'+
+                        '    <div class="row product" data-product-name="'+this.name+'">'+
                         '        <div class="col-12 col-sm-12 col-md-2 text-center">'+
                         '            <img class="img-responsive" src="/imgs/'+this.image+'" alt="prewiew" width="120" height="80">'+
                         '        </div>'+
                         '        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">'+
-                        '            <h4 class="product-name">'+
+                        '            <h4 class="product-title">'+
                         '                <strong>'+this.title+'</strong></h4>'+
                         '            <h4>'+
                         '                <small>'+this.description+'</small>'+
@@ -88,7 +88,7 @@ jQuery(function(){
                         '                </div>'+
                         '            </div>'+
                         '            <div class="col-2 col-sm-2 col-md-2 text-right">'+
-                        '                <button type="button" class="btn btn-outline-danger btn-xs">'+
+                        '                <button type="button" class="delete_product btn btn-outline-danger btn-xs">'+
                         '                    <i class="fa fa-trash" aria-hidden="true"></i>'+
                         '                </button>'+
                         '            </div>'+
@@ -132,8 +132,6 @@ jQuery(function(){
         };
 
 
-        console.log(data);
-
         $.post('/server/new_product.php', data, function(res){
 
             $('#new_product').modal('hide');
@@ -143,4 +141,20 @@ jQuery(function(){
 
     });
 
+    $(document).on('click','.delete_product',function(e){
+        e.preventDefault();
+
+        var cur_product = $(this).closest('.product_wrapper');
+
+        var data = {
+            "name": cur_product.children('.product').eq(0).attr('data-product-name')
+        };
+
+        $.post('/server/delete_product.php', data, function(res){
+
+            cur_product.remove();
+
+        });
+
+    });
 });
