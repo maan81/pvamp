@@ -45,9 +45,31 @@ function update_categories(){
     ;
 }
 
+function update_checkout(){
+    if(!$('#checkout_amount').val()) {
+        $('#checkout_btn')
+            .addClass('disabled')
+            .css('cursor','not-allowed')
+        ;
+    }else{
+        if($('#checkout_amount').val()>0){
+            $('#checkout_btn')
+                .removeClass('disabled')
+                .css('cursor','')
+            ;
+        }else{
+            $('#checkout_btn')
+                .addClass('disabled')
+                .css('cursor','not-allowed')
+            ;
+        }
+    }
+}
+
 jQuery(function(){
 
     update_categories();
+    update_checkout();
 
     $(document).on('click','a.category-link',function(e){
         e.preventDefault();
@@ -129,6 +151,8 @@ jQuery(function(){
 
         $('#checkout_amount').val(total);
 
+        update_checkout();
+
     });
 
 
@@ -196,4 +220,12 @@ jQuery(function(){
         });
 
     });
+
+    $(document).on('click','#checkout_btn',function(e){
+
+        if($(this).hasClass('disabled') ) {
+            return false;
+        }
+    })
+
 });
